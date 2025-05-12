@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Babyshop Staff Party Raffle Draw</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #FFD700;
+      font-family: 'Georgia', serif;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1, h2, h3 {
+      margin: 10px 0;
+      text-shadow: 1px 1px 8px #000;
+    }
+
+    h1 {
+      font-size: 48px;
+      color: #FFD700;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 36px;
+      color: #C0C0C0;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 32px;
+      color: #FFFFFF;
+      text-transform: uppercase;
+    }
+
+    #winner-title {
+      font-size: 42px;
+      color: #FFD700;
+      margin-top: 40px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    #name {
+      font-size: 60px;
+      margin: 30px 0;
+      color: #FFFFFF;
+      text-shadow: 2px 2px 10px #FFD700;
+    }
+
+    button {
+      background-color: #FFD700;
+      color: black;
+      font-size: 20px;
+      padding: 12px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
+      box-shadow: 0 0 10px #FFD700;
+    }
+
+    button:hover {
+      background-color: #e6c200;
+    }
+
+    .countdown {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #FFFFFF;
+      text-shadow: 1px 1px 5px #FFD700;
+    }
+  </style>
+</head>
+<body>
+  <h1>Babyshop</h1>
+  <h2>Annual Staff Party</h2>
+  <h3>Raffle Draw</h3>
+
+  <div id="winner-title">Winner</div>
+  <div id="name">Waiting for the magic...</div>
+  <div class="countdown" id="countdown">Get ready...</div>
+  <button onclick="drawName()">Pick a Winner</button>
+
+  <script>
+    let names = [
+      "Robert", "Sailesh", "Ruben", "Roy", "Roma", "Manisha", "Maina", "Kushal",
+      "Dheeraj", "Ayona", "Reshma", "Rajesh", "Aditi", "Olivia", "James", "Amelia",
+      "Liam", "Sophie", "Nathan", "Chloe"
+    ];
+    let usedNames = [];
+
+    function countdown(seconds, callback) {
+      let display = document.getElementById('countdown');
+      let counter = seconds;
+      let interval = setInterval(() => {
+        display.textContent = 'Drawing in... ' + counter;
+        counter--;
+        if (counter < 0) {
+          clearInterval(interval);
+          callback();
+        }
+      }, 1000);
+    }
+
+    function drawName() {
+      if (names.length === 0) {
+        document.getElementById('name').textContent = 'All names have been drawn!';
+        document.getElementById('countdown').textContent = '';
+        return;
+      }
+
+      countdown(5, () => {
+        const randomIndex = Math.floor(Math.random() * names.length);
+        const selectedName = names.splice(randomIndex, 1)[0];
+        usedNames.push(selectedName);
+        document.getElementById('name').textContent = selectedName;
+        document.getElementById('countdown').textContent = '';
+      });
+    }
+  </script>
+</body>
+</html>
