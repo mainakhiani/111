@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Babyshop Glitz & Glam Raffle</title>
+
+  <style>
+    body {
+      background-color: #000;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    #winner-title {
+      font-size: 42px;
+      color: #FFD700;
+      margin-top: 40px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    #name {
+      font-size: 60px;
+      margin: 30px 0;
+      color: #FFFFFF;
+      text-shadow: 2px 2px 10px #FFD700;
+    }
+
+H3 {
+Color:#FFD700;
+Font-size:42px;
+Margin-top: 20px;
+Text-transform: uppercase;
+}
+
+    button {
+      background-color: #FFD700;
+      color: black;
+      font-size: 20px;
+      padding: 12px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
+      box-shadow: 0 0 10px #FFD700;
+    }
+
+    button:hover {
+      background-color: #e6c200;
+    }
+
+    .countdown {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #FFFFFF;
+      text-shadow: 1px 1px 5px #FFD700;
+    }
+
+    img {
+      margin: 30px auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Babyshop Logo -->
+  <img src="images/babyshop-logo.png" alt="Babyshop Logo" width="300">
+
+  <!-- Glitz and Glam Image -->
+  <img src="images/glitz-glam.jpg" alt="Glitz and Glam" width="500">
+
+  <h3>Raffle Draw</h3>
+
+  <div id="winner-title">Winner</div>
+  <div id="name">Waiting for the magic...</div>
+  <div class="countdown" id="countdown">Get ready...</div>
+  <button onclick="drawName()">Pick a Winner</button>
+
+  <script>
+    let names = [
+      "Renuka Kalidasan",
+"Venkatasureshbabu Madaka",
+"Rahul Tamang",
+"Mahammad Suyam Saheb",
+"Nuni Lepcha",
+"George K.I.",
+"Deepak Devasia",
+"Shafqat Mansoor",
+"Poorna Alla",
+"Vineet Gupta",
+"Sanjeev Kumar",
+"Elton Joseph Ageira",
+"Ravi Aditya",
+"Dhanasekar Thanga Durai",
+"Sudhir Kumar Pathak",
+"Ankit Goyal",
+"Rachael Louise Smith",
+"Guruprasad Kundapura Yashwanthnaik",
+"Aishwarya Haridas Menon",
+"Jinali Dhananjanie Pathiratne Palatuwage",
+"Prashant Ranjan",
+"Jaquiline De Guzman",
+"Reshma Kowsar",
+"Mohammad Nawaz Khan",
+"Shobha Nirmani Ellegedara",
+"Ajith Kumar Sailaja Sadasivan",
+"Chiqui Grace Lobaton",
+"Jerusalem Pimentel",
+"Pratishthit Chauhan",
+"Jinu Krishnan Charivuparampil Gopalakrishnan",
+"Jaffer Hussain",
+"Ram Kapoor",
+"Said Thudimmal",
+"Shahina Fasaludeen Noorjahan",
+"Poulami Mondal",
+"Tej Bahadur",
+"Akshay  Rao",
+"Pameli Das",
+"Satnam Singh",
+"Joohi Jain",
+"Mohamed Cherif Boukheroufa",
+"Tahir Nakash Ismail",
+"Ralph Gregor Cruz",
+"Jithesh Mohan Kumar Sivakumar",
+"Cynthia Africa",
+"Kunal Dhiman",
+"Anuththara Nayomi Siriwardena",
+"Mohammed Mohsin Siddiqui",
+"Syed Jasim Ahmed",
+"Camille Baquirin",
+"Louisa Watson",
+"Summell Gabon",
+"Samir Misra",
+"Syed Zain Ali",
+"Mohammad  Irshad",
+"Chaitali Bharat Gala",
+"Meghna Dodia",
+"Ramandeep Gill",
+"Shibhu Koyickalathu Thomas",
+"Nolwazi Lorraine Maziya",
+"Pepito Felipe",
+"Shady Ibrahim Mohamed Abdo",
+"Samar Chowdhary",
+"Hombala Bhardwaj",
+"Shazen Wasim Khan",
+"Diana Odeh",
+"Jagannath Khemlani",
+"Sharoze Ali",
+"Zahraa Abdul Salam",
+"Vishav Harish Kumar",
+"Alvina Velani Pasangha",
+"Wicrant Gambhir",
+"Mohammad Aamir Qureshi",
+"Fousi Alshab",
+"Nikunj Mohanbhai Bhutiya",
+"Apoorv Misra",
+"Neha Kataria",
+"Nagarjun B Jagadeesh",
+"Varsha Govindan",
+"Dona KL Athapaththu",
+"Abir Kumar Barman",
+"Usman Hayat",
+"Dhruv Shah",
+"Tanvi Sinha",
+"Mohamed Ahmed Gamal",
+"Upanish Poulose",
+"Aasia Rahman",
+"Pratap Lenka",
+"Arjun Iyer",
+"Jarvis John",
+"Jithin Manoj",
+"Fathima Ismail",
+"Md Reyaz Arif",
+"Mallikarjuna Rao Pinjala",
+"Sara Eido",
+"Prashant Shetty",
+"Subhash Tharappel Narayanankutty",
+"Santosh Anand Singh",
+"Suhas Sikkandar",
+"Revathi Vutukuri",
+"Mohammed Salman",
+"Hasam Ahmed",
+"Navya Sreeranj",
+"Shweta Rajesh Mishra",
+"Anish Das",
+"Ashish Anand",
+"Chaitanya Chaudhary",
+"Apoorva Shree",
+"Radhesh Powvothil",
+"Benu Varghese Benjamin",
+"Tania Sara Alexander",
+"Vishnuprabhu Durairaj",
+"Sushmita Dey",
+"Megha Yadav",
+"Mohammed Javed",
+"Husnal Bhalla",
+"Khaoula Maliki",
+"Isha Aggarwal",
+"Reshma Sabu",
+"Suhaib Khan",
+"Ankit Abrol",
+"Anjila Khanchandani",
+"Rakesh Kumar",
+"Anisha Velayudhan Perumbal",
+"Dilipkumar Kahar",
+"Samishtha Subramanian",
+"Pooja Chauhan",
+"Aastha Yadav",
+"Mohammed Shazid Gazi",
+"Ankur Gupta",
+"Gyanesh Chauhan",
+"Mohd Umair",
+"Debasish Roy",
+"Ruby Chavez",
+"Kanchan Gupta",
+"Rajesh K.Venugopal",
+"Prabhat Jha",
+"Shweta Alakkal",
+"Drishti Asrani",
+"Rovelyn Macasaddu",
+"Mojibur Muslem Uddin",
+"Ritika Singh",
+"Palak Vyas",
+"Aasaf Parvez",
+"Ashima Nazar",
+"Paree Dhanak",
+"Infanct Arunraj",
+"Byron Jim Ambat",
+"Joseph Sengco",
+"Nagesh Singh",
+"Rizwin Kidavintavida",
+"Insa Quaison",
+"Meena Bisht",
+"Harishankar Pradeepkumar",
+"Kumar Parmar",
+"Lavin Motwani",
+"Ashutosh Bhimwal",
+"Mayara Alves Costa",
+"Vallari Kaushik",
+"Sheena Devey",
+"Pranav Sejpal",
+"Sabina Ibrahimova",
+"Akramullah Khan",
+"Amit Kumar",
+"Ria Mallik",
+"Mohammed Arshad",
+"Juliet John",
+"Ayona Chowdhury",
+"Emma Wood",
+"Savannah Abdo",
+"Jennalee Callister",
+"Surbhi Goyal",
+"Shambhavi Mishra",
+"Violet D'Souza",
+"Aleena Sudheer",
+"Suresh Kamalanathan",
+"Mohit Khurana",
+"Nashid Abdul Nazar",
+"Khaja Naseeruddin",
+"Prajeesh Warrier Madhavan Veppattu Warriam",
+"Nitin Vij",
+"Vivek Thali",
+"Imraz Hussain",
+"Mohanaruban Shanmugarajah",
+"Anil Kolikundu",
+"Fouzan Nariampet",
+"Enson Prince",
+"Pankaj Verma",
+"Sharmila Baraneedhran",
+"Tesfanesh Hailu Kabeto",
+"John Justin",
+"Balaji Venugopalan",
+"Mariyappan Ramakrishnan",
+"Latheesh Kottila Veedu",
+"Derick Philip",
+"Julius Presado",
+"Rucha Satish Thakre",
+"Sambhrant Mungali",
+"Rene Lanzaderas",
+"Mitin Chakraborty",
+"Bikash Pradhan",
+    ];
+    let usedNames = [];
+
+    function countdown(seconds, callback) {
+      let display = document.getElementById('countdown');
+      let counter = seconds;
+      let interval = setInterval(() => {
+        display.textContent = 'Drawing in... ' + counter;
+        counter--;
+        if (counter < 0) {
+          clearInterval(interval);
+          callback();
+        }
+      }, 1000);
+    }
+
+    function drawName() {
+      if (names.length === 0) {
+        document.getElementById('name').textContent = 'All names have been drawn!';
+        document.getElementById('countdown').textContent = '';
+        return;
+      }
+
+      countdown(5, () => {
+        const randomIndex = Math.floor(Math.random() * names.length);
+        const selectedName = names.splice(randomIndex, 1)[0];
+        usedNames.push(selectedName);
+        document.getElementById('name').textContent = selectedName;
+        document.getElementById('countdown').textContent = '';
+      });
+    }
+  </script>
+</body>
+</html>
